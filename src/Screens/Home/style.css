@@ -37,15 +37,15 @@
 }
 
 .section1__content > h1 {
-    font-size: 72px;
+    font-size: 5.5vw;
     margin-bottom: -0.5em;
 }
 .section1__content > h3 {
-    font-size: 36px;
+    font-size: 3vw;
     margin-bottom: -0.1em;
 }
 .section1__content > p {
-    font-size: 24;
+    font-size: 1.6vw;
     font-weight: bold;
 }
 
@@ -59,7 +59,7 @@
     background-color: white;
     color: #B9EB17;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2vw;
     cursor: pointer;
     transition: all 300ms ease;
 }
@@ -77,32 +77,37 @@
     margin-left: 5em;
 }
 
+.section2__img {
+    object-fit: contain;
+    width: 40vw;
+}
+
 .section2__rightSide {
     width: 30vw;
     height: 70vh;
     background-color: #B9EB17;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 2px lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .section2__title {
     color: white;
-    font-size: 24px;
-    margin-left: 1.2em;
-    margin-top: 2em;
+    font-size: 2vw;
 }
 
 .section2__description {
     width: 90%;
-    font-size: 18px;
+    font-size: 1.3vw;
     font-weight: bold;
     text-align: justify;
-    margin-left: 1.5em;
-    margin-top: 2.5em;
 }
 
 .section2__button {
-    font-size: 18px;
+    font-size: 2.5vh;
     font-weight: bold;
     width: 30%;
     height: 8%;
@@ -111,8 +116,6 @@
     outline: none;
     background-color: white;
     color: #F6D70C;
-    margin-left: 7em;
-    margin-top: 2em;
     box-shadow: 1px 1px 1px 1px rgba(37,37,37, 0.61);
     transition: all 300ms ease;
     cursor: pointer;
@@ -153,12 +156,12 @@
     display: flex;
     flex-direction: column;
     color: white;
-    font-size: 16px;
+    font-size: 1.4vw;
     font-weight: bold;
 }
 
 .input > select {
-    padding: 1em;
+    padding: 1vw;
     outline: none;
     border: 2px solid #F6D70C;
     border-radius: 30px;
@@ -169,14 +172,14 @@
     outline: none;
     border: 2px solid #F6D70C;
     border-radius: 30px;
-    padding: 1em;
+    padding: 1vw;
 }
 
 .section3__button {
     margin-top: 5em;
     border: none;
     outline: none;
-    font-size: 20px;
+    font-size: 1.8vw;
     color: white;
     background-color: #F6D70C;
     width: 20%;
@@ -221,15 +224,24 @@
     transition: all 500ms ease;
 }
 
+.card > h2 {
+    font-size: 2vw;
+}
+
 .circle {
     background-color: white;
-    width: 7em;
-    height: 7em;
+    width: 9vw;
+    height: 9vw;
     border-radius: 50%;
     box-shadow: 2px 2px 2px black;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.circle > img {
+    object-fit: contain;
+    width: 6vw;
 }
 
 .card:hover {

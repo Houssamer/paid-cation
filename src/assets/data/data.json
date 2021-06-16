@@ -1,0 +1,152 @@
+[
+    {
+        "id": "1",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "2",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "3",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "4",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "5",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "6",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "7",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "8",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "9",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    },
+    {
+        "id": "10",
+        "nom": "",
+        "ville": "",
+        "rate": "",
+        "type": "",
+        "prix": "",
+        "images": [
+            "",
+            "",
+            ""
+        ],
+        "location": ["jour", "heure"],
+        "description": ""
+    }
+]
