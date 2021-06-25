@@ -1,0 +1,126 @@
+.container_inscriptionClient {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.section_inscriptionClient {
+    width: 80%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px  black;
+    margin-top: 5vh;
+}
+
+.section_inscriptionClient > form {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+} 
+
+.form__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.form__contentLeft, .form__contentRight {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.input_inscription  {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    width: 100%;
+}
+
+.input_inscription > input {
+    height: 4vh;
+    padding: .6vw;
+    background-color: white;
+    color: #0F9DE8;
+    outline: none;
+    border: 2px solid #0F9DE8;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 300ms ease;
+}
+
+.input_inscription > input:focus {
+    border: 5px solid #0F9DE8;
+}
+.input_inscription > input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #0F9DE8;
+    opacity: 1; /* Firefox */
+  }
+  
+ .input_inscription > input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #0F9DE8;
+  }
+  
+ .input_inscription >input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #0F9DE8;
+  }
+
+.input_inscription > label {
+    font-size: 1.2vw;
+    margin-bottom: 0.5vh;
+    color: black;
+    font-weight: bold;
+}
+
+.button_inscription {
+    width: 30%;
+    font-size: 1.4vw;
+    border-radius: 30px;
+    font-weight: bold;
+    height: 7vh;
+    margin-top: 4vh;
+    border: none;
+    outline: none;
+    background-color: #0F9DE8;
+    color: white;
+    transition: all 300ms ease;
+    cursor: pointer;
+}
+
+.button_inscription:hover {
+    border: 2px solid #0F9DE8;
+    background-color: white;
+    color: #0F9DE8;
+
+}
+
+.section_inscriptionClient > h3 {
+    font-size: 1.3vw;
+    color: #929292;
+    text-align: center;
+}
+
+.login_inscription {
+    color: black;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.login_inscription:hover {
+    text-decoration: underline;
+    transition: all 300ms ease;
+}

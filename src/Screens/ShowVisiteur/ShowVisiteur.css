@@ -1,0 +1,89 @@
+.container__showVisiteur {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sectionVisiteur__leftSide {
+    width:  20%;
+    height: 70vh;
+    border: 1px solid #0F9DE8;
+    border-radius: 30px;
+    position: fixed;
+    top: 20%;
+    left: 5%;
+
+}
+
+.sectionVisiteur__rightSide {
+    width: 68%;
+    height: 80vh;
+    border-radius: 30px;
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sectionVisiteur__leftSide > form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input__visiteur {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input__visiteur > label {
+    font-size: 1vw;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.input__visiteur > select {
+    width: 100%;
+    height: 6vh;
+    border: 1px solid #0F9DE8;
+    border-radius: 30px;
+    padding: 2px;
+    outline: none;
+    font-size: 1.1vw;
+}
+
+.input__visiteur > input {
+    width: 100%;
+    height: 6vh;
+    border: 1px solid #0F9DE8;
+    border-radius: 30px;
+    padding: 2px;
+    outline: none;
+    font-size: 1vw;
+}
+
+.button__visiteur {
+    width: 60%;
+    height: 4vh;
+    background-color: white;
+    border: 1px solid #0F9DE8;
+    border-radius: 30px;
+    font-weight: bold;
+    color: #0F9DE8;
+    outline: none;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.button__visiteur:hover {
+    color: white;
+    background-color: #0F9DE8;
+    border: none;
+    transform: scale(1.2);
+}

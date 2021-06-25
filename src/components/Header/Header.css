@@ -16,7 +16,7 @@
 }
 
 .header__yellow {
-    background-color: #80a700;
+    background-color: #0F9DE8;
     transition: all 500ms ease;
 }
 
@@ -25,13 +25,15 @@
     width: 120px;
     margin: 2em;
     cursor: pointer;
+    background-color: white;
+    border-radius: 30px;
 }
 
 .header__button {
     width: 120px;
     height: 35px;
     margin: 2em;
-    background-color: #B9EB17;
+    background-color: #0F9DE8;
     outline: none;
     border: none;
     border-radius: 30px;
@@ -49,5 +51,5 @@
 }
 
 .header__button:hover {
-    background-color: #F6D70C;
+    background-color: #6050DC;
 }

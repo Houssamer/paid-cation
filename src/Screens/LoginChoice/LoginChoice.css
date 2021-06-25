@@ -1,0 +1,165 @@
+.container {
+    width: 100%;
+    height: 100vh;
+}
+
+.section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section__content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section__content > h1 {
+    color: white;
+    font-size: 4vw;
+    margin-bottom: 20vh;
+}
+
+.background__img {
+    width: 100%;
+    height: 100vh;
+    object-fit: contain;
+    background-image: url('../../assets/pictures/page.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+}
+
+.shadow {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        rgba(37,37,37, 0.61),
+        #111
+    );
+    z-index: -1;
+}
+
+.section__buttons {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button {
+    color: white;
+    background-color: #0F9DE8;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    width: 45%;
+    height: 8vh;
+    font-size: 1.9vw;
+    transition: all 500ms ease;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #0F9DE8;
+    transition: all 300ms ease;
+    transform: scale(1.2);
+}
+
+.login {
+    width: 36%;
+    height: 80vh;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+}
+
+.login > form {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input {
+    color: black;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input > input {
+    width: 90%;
+    transition: all 300ms ease;
+}
+
+input:focus {
+    border: 5px solid slateblue;
+    transition: all 300ms ease;
+}
+
+.label {
+    margin-bottom: 2vh;
+}
+
+.submit {
+    width: 40%;
+    height: 6vh;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    background-color: #0F9DE8;
+    color: white;
+    font-size: 1vw;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.submit:hover {
+    background-color: white;
+    color: #0F9DE8;
+    border: 2px solid #0F9DE8;
+    transform: scale(1.2);
+}
+
+.login > h3 {
+    font-size: 1.3vw;
+    color: #929292;
+    text-align: center;
+}
+
+.signUp {
+    color: black;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.signUp:hover {
+    text-decoration: underline;
+}
+
+.arrow {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.arrow:hover {
+    opacity: 0.5;
+}

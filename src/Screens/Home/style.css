@@ -38,11 +38,9 @@
 
 .section1__content > h1 {
     font-size: 5.5vw;
-    margin-bottom: -0.5em;
 }
 .section1__content > h3 {
     font-size: 3vw;
-    margin-bottom: -0.1em;
 }
 .section1__content > p {
     font-size: 1.6vw;
@@ -57,7 +55,7 @@
     border: none;
     border-radius: 30px;
     background-color: white;
-    color: #B9EB17;
+    color: #0F9DE8;
     font-weight: bold;
     font-size: 2vw;
     cursor: pointer;
@@ -65,7 +63,8 @@
 }
 
 .section1__button:hover {
-    background-color: #111;
+    background-color: #0F9DE8;
+    color: white;
 }
 
 .section2 {
@@ -85,7 +84,7 @@
 .section2__rightSide {
     width: 30vw;
     height: 70vh;
-    background-color: #B9EB17;
+    background-color: #0F9DE8;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 2px lightgray;
     display: flex;
@@ -106,26 +105,6 @@
     text-align: justify;
 }
 
-.section2__button {
-    font-size: 2.5vh;
-    font-weight: bold;
-    width: 30%;
-    height: 8%;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    background-color: white;
-    color: #F6D70C;
-    box-shadow: 1px 1px 1px 1px rgba(37,37,37, 0.61);
-    transition: all 300ms ease;
-    cursor: pointer;
-}
-
-.section2__button:hover {
-    background-color: black;
-    transform: scale(1.2);
-}
-
 .section3 {
     width: 100%;
     height: 100vh;
@@ -138,11 +117,12 @@
 .searchBar {
     width: 80%;
     height: 25%;
-    background-color: #B9EB17;
+    background-color: #0F9DE8;
     border-radius: 30px;
     display: flex;
     align-items: center;
     box-shadow: 5px 5px 5px 2px lightgray;
+    padding: 2vw;
 }
 
 .searchBar > form {
@@ -152,7 +132,7 @@
     justify-content: space-evenly;
 }
 .input {
-    width: 30%;
+    width: 25%;
     display: flex;
     flex-direction: column;
     color: white;
@@ -163,14 +143,14 @@
 .input > select {
     padding: 1vw;
     outline: none;
-    border: 2px solid #F6D70C;
+    border: 2px solid #6050DC;
     border-radius: 30px;
 
 }
 
 .input > input {
     outline: none;
-    border: 2px solid #F6D70C;
+    border: 2px solid #6050DC;
     border-radius: 30px;
     padding: 1vw;
 }
@@ -181,7 +161,7 @@
     outline: none;
     font-size: 1.8vw;
     color: white;
-    background-color: #F6D70C;
+    background-color: #6050DC;
     width: 20%;
     height: 7%;
     border-radius: 30px;
@@ -192,7 +172,7 @@
 }
 
 .section3__button:hover {
-    background-color: #B9EB17;
+    background-color: #0F9DE8;
     transform: scale(1.2);
 }
 
@@ -204,7 +184,7 @@
 .cards {
     width: 100%;
     height: 100vh;
-    background-color: #B9EB17;
+    background-color: #0F9DE8;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

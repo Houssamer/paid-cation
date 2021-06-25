@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 import logo from '../../assets/Design/logo.png';
+import { useHistory } from 'react-router-dom';
 
 function Header() {
     const [white, setWhite] = useState(false);
     const [yellow, setYellow] = useState(false);
+    const history = useHistory();
+
+    function handleRoute() {
+        history.push('/');
+    }
+    function LOGIN() {
+        history.push('/loginchoice')
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', ()=> {
@@ -28,8 +37,8 @@ function Header() {
 
     return (
         <div className={`header ${white && `header__white`} ${yellow && `header__yellow`}`}>
-            <img src={logo} alt="logo" className="header__img" />
-            <button className={`header__button ${yellow && `header__button__yellow`}`}>Login</button>
+            <img src={logo} alt="logo" className="header__img" onClick={handleRoute} />
+            <button className={`header__button ${yellow && `header__button__yellow`}`} onClick={LOGIN}>Login</button>
         </div>
     )
 }

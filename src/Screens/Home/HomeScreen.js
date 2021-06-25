@@ -8,8 +8,16 @@ import one from '../../assets/Design/one.png';
 import facebook from '../../assets/Design/facebook.svg';
 import instagram from '../../assets/Design/instagram.svg';
 import linkedin from '../../assets/Design/linkedin.svg';
+import { useHistory } from 'react-router-dom';
 
 function HomeScreen() {
+    const history = useHistory();
+
+    function rechercher(event) {
+        event.preventDefault();
+        history.push('/visiteur');
+    }
+
     return (
         <div className="homeScreen">
             <Header />
@@ -20,9 +28,9 @@ function HomeScreen() {
                 <h1>Travaillez de n'importe où</h1>
                 <h3>Fini le stress au travail</h3>
                 <p>Réserver un bureau pour vous où votre équipe et vivre comme si vous êtes en vacances</p>
-                <button className="section1__button">Réserver maintenant</button>
+                <button className="section1__button" onClick={rechercher}>Réserver maintenant</button>
             </div>
-
+            
             <div className="homeScreen__shadow" /> 
             </div>
 
@@ -38,7 +46,6 @@ function HomeScreen() {
                         et vivre comme si vous êtes en vacances. Augmenter 
                         la créativté de votre équipe.
                     </p>
-                    <button className="section2__button">Voir plus</button>
                 </div>
             </div>
 
@@ -69,7 +76,7 @@ function HomeScreen() {
                         </div>
                     </form>
                 </div>
-                <button className="section3__button">Rechercher</button>
+                <button className="section3__button" onClick={(event) => rechercher(event)}>Rechercher</button>
             </div>
             <div className="section4">
                 <div className="cards">
