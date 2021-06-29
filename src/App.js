@@ -12,12 +12,16 @@ import InscriptionEspace from './Screens/InscriptionEspace/InscriptionEspace';
 import ShowVisiteur from './Screens/ShowVisiteur/ShowVisiteur';
 import ShowClient from './Screens/ShowClient/ShowClient';
 import ProfileClient from './Screens/ProfileClient/ProfileClient';
+import ProfileEspace from './Screens/ProfileEspace/ProfileEspace';
 
 function App() {
   return (
     <Router>
         <Switch>
-          <Route path="/client">
+          <Route path="/espaceProfile">
+            <ProfileEspace />
+          </Route>
+          <Route path="/clientProfile">
             <ProfileClient />
           </Route>
           <Route path="/clientshow">

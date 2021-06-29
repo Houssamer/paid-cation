@@ -1,0 +1,23 @@
+.reservation__client__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.reservation__client__empty__container {
+    width: 100%;
+}
+
+.reservation__client__empty {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7vh;
+}
+
+.reservation__client__empty__img {
+    object-fit: contain;
+    width: 30%;
+
+}

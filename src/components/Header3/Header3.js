@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './Header2.css';
+import './Header3.css';
 import logo from '../../assets/Design/logo.png';
 import profile from '../../assets/pictures/profile.png';
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../features/userSlice';
 
-function Header2() {
+function Header3() {
     const history = useHistory();
     const [white, setWhite] = useState(false);
     const user = useSelector(selectUser);
@@ -16,7 +16,7 @@ function Header2() {
     }
 
     function profileScreen() {
-        history.push('/clientProfile')
+        history.push('/espaceProfile')
     }
 
     useEffect(() => {
@@ -36,12 +36,12 @@ function Header2() {
 
 
     return (
-        <div className={`header2 ${white && `header2__white`}`}>
-            <img src={logo} alt="logo" className="header2__logo" onClick={homeScreen} />
+        <div className={`header3 ${white && `header3__white`}`}>
+            <img src={logo} alt="logo" className="header3__logo" onClick={homeScreen} />
 
-            <img src={user.image ? user.image : profile} alt="profile" className="header2__profile" onClick={profileScreen} />
+            <img src={user.image ? user.image : profile} alt="profile" className="header3__profile" onClick={profileScreen} />
         </div>
     )
 }
 
-export default Header2
+export default Header3;

@@ -8,6 +8,7 @@
     border: 2px solid #E8890E;
     margin-bottom: 4vh;
     transition: all 300ms ease;
+    cursor: pointer;
 }
 
 .container__product:hover {
@@ -72,7 +73,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
 }
 
 .product__button {

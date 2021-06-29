@@ -1,0 +1,59 @@
+.reservationEdit__client__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.reservation__client__arrow {
+    object-fit: contain;
+    width: 40px;
+    margin-top: 5vh;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.reservation__client__arrow:hover {
+    opacity: 0.4;
+    transition: all 300ms ease;
+}
+
+.reservationEdit__client__content {
+    margin-top: 8vh;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reservation__client__card {
+    width: 30%;
+    height: 70vh;
+    border: 2px solid #E8890E;
+    border-radius: 30px;
+    box-shadow: 4px 4px 5px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reservation__client__card > h2 {
+    margin-top: 3vh;
+    font-size: 2vw;
+}
+
+.reservation__client__det {
+    width: 100%;
+    margin-top: 5vh;
+    margin-left: 3vw;
+}
+
+.reservation__client__det > h4 {
+    font-size: 1.5vw;
+    font-weight: 400;
+    margin-top: 5vh;
+}
+
+.reservation__client__det > h4 > span {
+    font-weight: 700;
+}

@@ -1,39 +1,40 @@
-.profile__container {
+.profile__espace__container {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.profile__buttons {
+.profile__espace__buttons {
     margin-top: 12vh;
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.profile__button {
-    width: 40%;
+.profile__espace__button {
+    width: 28%;
     height: 6vh;
     border: none;
-    background-color: #6050DC;
-    color: white;
+    outline: none;
     border-radius: 30px;
+    color: white;
+    background-color: #6050DC;
     cursor: pointer;
     transition: all 300ms ease;
 }
 
-.profile__button:hover {
+.profile__espace__button:hover {
     transform: scale(1.2);
     transition: all 300ms ease;
 }
 
-.profile__button__active {
+.profile__espace__button__active {
     background-color: #E8890E;
 }
 
-.profile__screens {
-    width: 90%;
+.profile__espace__screens {
     margin-top: 5vh;
+    width: 90%;
 }
