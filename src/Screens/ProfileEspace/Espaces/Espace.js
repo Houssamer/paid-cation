@@ -25,11 +25,11 @@ function Espace() {
                 espaces
                 ? 
                 <>
-                    {espaces.map(({id, title, image, lieu, features, price, type}) => (
+                    {espaces.map(({id, title, images, lieu, features, price, type}) => (
                         <div className="espaces__espace__produit" onClick={() => handleEdit(id)}>
                             <Product 
                                 title={title} 
-                                image={image} 
+                                image={images[0]} 
                                 lieu={lieu} 
                                 features={features} 
                                 price={price} 

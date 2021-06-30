@@ -1,0 +1,118 @@
+.information__espace__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+}
+
+.information__espace__topSide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80%;
+    width: 100%;
+}
+
+.information__espace__leftSide {
+    height: 100%;
+    width: 50%;
+
+}
+
+.information__espace__leftSide > form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.information__espace__info {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.information__espace__rightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 50%;
+}
+
+.information__espace__info > label {
+    font-size: 1.3vw;
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+.information__espace__info > input {
+    width: 100%;
+    padding: 6px;
+    border-radius: 30px;
+    border: 3px solid #0F9DE8;
+    outline: none;
+    font-weight: 550;
+    color: #0F9DE8;
+
+}
+
+.information__espace__img {
+    object-fit: contain;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+}
+
+.information__espace__editImage {
+    width: 40%;
+    height: 5vh;
+    border: none;
+    border-radius: 30px;
+    background-color: #0F9DE8;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2vw;
+    cursor: pointer;
+    transition: all 800ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.information__espace__editImage:hover {
+    background-color: white;
+    color: #0F9DE8;
+    border: 3px solid #0F9DE8;
+    transition: all 300ms ease;
+}
+
+.information__espace__bottomSide {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.information__espace__editButton {
+    margin-top: 5vh;
+    width: 30%;
+    height: 5vh;
+    border: 3px solid #0F9DE8;
+    border-radius: 30px;
+    color: #0F9DE8;
+    background-color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 600ms ease;
+}
+
+.information__espace__editButton:hover {
+    background-color: #0F9DE8;
+    color: white;
+    transition: all 300ms ease;
+}

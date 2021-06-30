@@ -84,11 +84,14 @@ export const espacePageSlice = createSlice({
           informationEdit: false,
         }
       },
-      setEspaceEdit: (state) => {
+      setEspaceEdit: (state, action) => {
         state.espacePage = {
           espace: false,
           espaceAdd: false,
-          espaceEdit: true,
+          espaceEdit: {
+            bool: true,
+            id: action.payload
+          },
           reservation: false,
           reservationEdit: false,
           information: false,

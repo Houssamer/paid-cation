@@ -4,6 +4,7 @@ import reservationsReducer from '../features/reservationsSlice';
 import userReducer from '../features/userSlice';
 import espacePageReducer from '../features/espacePageSlice';
 import espacesReducer from '../features/espacesSlice';
+import reservationsEspaceReducer from '../features/reservationsEspaceSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     user: userReducer,
     espacePage: espacePageReducer,
     espaces: espacesReducer,
+    reservationsEspace: reservationsEspaceReducer,
   },
 });

@@ -7,7 +7,7 @@ export const espacesSlice = createSlice({
       [{
         id: 1,
         title: "Titre de publication",
-        image: hotel,
+        images: [hotel],
         lieu: "Lieu d'espace",
         features: ["wifi", "Déjeuner", "parking"],
         price: "400dh",
