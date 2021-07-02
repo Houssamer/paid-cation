@@ -35,6 +35,11 @@
     color: #0F9DE8;
 }
 
+.checkout__leftSide__button:disabled {
+    opacity: 0.7;
+    background-color: #BFBFBF;
+}
+
 .checkout__line {
     width: .15vw;
     height: 80vh;

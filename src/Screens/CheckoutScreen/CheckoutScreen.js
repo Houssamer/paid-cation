@@ -13,7 +13,7 @@ function CheckoutScreen() {
     const product = products.filter(product => product.id === parseInt(id))
     const day = product[0].timing[0] === "Jour";
     const hour = product[0].timing[1] === "Hour";
-    const [active, setActive] = useState(false);
+    const [active, setActive] = useState(true);
     const [jour, setJour] = useState(true);
     const [price, setPrice] = useState(0)
     const arriveDayRef = useRef();
@@ -102,12 +102,14 @@ function CheckoutScreen() {
                     <button 
                         className={`checkout__rightSide__button ${jour && `checkout__button__active`}`}
                         onClick={HandleDay}
+                        disabled={hour}
                     >
                         Jours
                     </button>
                     <button 
                         className={`checkout__rightSide__button ${!jour && `checkout__button__active`}`}
                         onClick={HandleHour}
+                        disabled={day}
                     >
                         Heures
                     </button>
