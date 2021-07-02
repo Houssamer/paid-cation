@@ -4,7 +4,7 @@ import './EspaceAdd.css';
 function EspaceAdd() {
     const [images, setImages] = useState();
     const [img, setImg] = useState(null);
-    const [tags, setTags] = useState();
+    const [tags, setTags] = useState(null);
     const fileInputRef = useRef();
 
     useEffect(() => {
@@ -30,8 +30,13 @@ function EspaceAdd() {
 
     function addTags(event) {
         if (event.target.value !== "") {
-            setTags([...tags, event.target.value]);
-            event.target.value = "";
+            if (tags === null) {
+                setTags([event.target.value]);
+                event.target.value="";
+            } else {
+                setTags([...tags, event.target.value])
+                event.target.value = "";
+            }
         }
     }
 
@@ -78,6 +83,27 @@ function EspaceAdd() {
                         <label htmlFor="price">Prix</label>
                         <input type="text" id="price" placeholder="Prix" />
                     </div>
+                    <div className="espace__add__input">
+                        <label htmlFor="city">Ville</label>
+                        <input type="text" id="city" placeholder="Ville" />
+                    </div>
+                    <div className="espace__add__input">
+                        <label htmlFor="price">Type</label>
+                        <select type="text" id="type" placeholder="Type">
+                            <option value="hotel">Hôtel</option>
+                            <option value="appartement">Appartement</option>
+                            <option value="cafe">Cafe</option>
+                            <option value="espace">Espace de travail</option>
+                        </select>
+                    </div>
+                    <div className="espace__add__input">
+                        <label htmlFor="timing">Jour/Heure</label>
+                        <select type="text" id="timing">
+                            <option value="jour">Jour</option>
+                            <option value="heure">Heure</option>
+                            <option value="both">les deux</option>
+                        </select>
+                    </div>
                     <h3>Tags</h3>
                     <div className="espace__add__input__tags">
                         <ul className="tags">
@@ -97,6 +123,15 @@ function EspaceAdd() {
                             id="tags"
                         />
                     </div>
+                    <label htmlFor="description" className="espace__add__description__label">Description</label>
+                    <textarea 
+                        name="description" 
+                        id="description" 
+                        cols="30" rows="10" 
+                        className="espace__add__description"
+                    >
+
+                    </textarea>
                 </form>
             </div>
             <div className="espace__add__rightSide">

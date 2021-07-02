@@ -2,9 +2,12 @@ import React from 'react';
 import './Product.css';
 
 function Product({title, image, lieu, features, price, type}) {
+
+
+
     return (
         <div className="container__product">
-                        <div className="type">
+            <div className="type">
                 <h3>{type}</h3>
             </div>
             
@@ -16,7 +19,7 @@ function Product({title, image, lieu, features, price, type}) {
                 <h2>{title}</h2>
                 <h4>{lieu}</h4>
                 <div className="features">
-                    {features.map(feature => (
+                    {features?.map(feature => (
                         <h5>{feature}</h5>
                     ))}
                 </div>

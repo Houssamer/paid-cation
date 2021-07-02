@@ -2,9 +2,20 @@ import React from 'react';
 import './ShowVisiteur.css';
 import Header from '../../components/Header/Header';
 import Product from '../../components/Product/Product';
-import hotel from '../../assets/pictures/hotel.jpg';
+import { useSelector } from 'react-redux';
+import { selectProducts } from '../../features/productsSlice';
+import { useHistory } from 'react-router-dom';
 
 function ShowVisiteur() {
+    const products = useSelector(selectProducts);
+
+    const history = useHistory();
+
+    function handleClick(id) {
+        history.push(`/product/${id}`);
+    }
+    
+
     return (
         <div className="container__showVisiteur">
             <Header />
@@ -46,86 +57,19 @@ function ShowVisiteur() {
                 </form>
             </div>
             <div className="sectionVisiteur__rightSide">
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
-                <Product 
-                    title="Titre de publication" 
-                    image={hotel} 
-                    lieu="Lieu d'espace" 
-                    features={["wifi", "Déjeuner", "Parking"]}
-                    price="Prix" 
-                    type="Hotel" 
-                />
+            {products.map(product => (
+                <div onClick={() => handleClick(product.id)}>
+                    <Product
+                        key={product.id}
+                        title={product.title}
+                        image={product.images[0]}
+                        type={product.type}
+                        features={product.features}
+                        lieu={product.lieu}
+                        price={product.price}
+                    />                    
+                </div>
+                ))}
             </div>
         </div>
     )

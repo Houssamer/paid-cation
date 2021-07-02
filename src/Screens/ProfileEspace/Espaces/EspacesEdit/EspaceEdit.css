@@ -14,7 +14,7 @@
 
 .espace__edit__leftSide > form {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,6 +95,23 @@ h3 {
     cursor: pointer;
     font-weight: bold;
     margin-right: 0.2vw;
+}
+
+.espace__edit__description__label {
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    font-weight: 500;
+}
+
+.espace__edit__description {
+    border: 2px solid #0F9DE8;
+    border-radius: 10px;
+    height: 30vh;
+    width: 70%;
+    outline: none;
+    padding: 5px;
+    margin-bottom: 2vh;
+    resize: none;
 }
 
 .espace__edit__rightSide {

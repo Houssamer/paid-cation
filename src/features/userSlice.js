@@ -10,7 +10,7 @@ export const userSlice = createSlice({
       num: "0665984565",
       email: "houssame@gmail.com",
       image: "",
-      role: "",
+      role: "client",
     },
   },
   // The `reducers` field lets us define reducers and generate associated actions

@@ -71,6 +71,10 @@ function EspaceEdit() {
                         <label htmlFor="price">Prix</label>
                         <input type="text" id="price" placeholder={espace[0].price} />
                     </div>
+                    <div className="espace__edit__input">
+                        <label htmlFor="city">Ville</label>
+                        <input type="text" id="city" placeholder={espace[0].ville} />
+                    </div>
                     <h3>Tags</h3>
                     <div className="espace__edit__input__tags">
                         <ul className="tags">
@@ -90,6 +94,16 @@ function EspaceEdit() {
                             id="tags"
                         />
                     </div>
+                    <label htmlFor="description" className="espace__edit__description__label">Description</label>
+                    <textarea 
+                        name="description" 
+                        id="description" 
+                        cols="30" 
+                        rows="10" 
+                        className="espace__edit__description"
+                    >
+                        {espace[0].description}
+                    </textarea>
                 </form>
             </div>
             <div className="espace__edit__rightSide">
