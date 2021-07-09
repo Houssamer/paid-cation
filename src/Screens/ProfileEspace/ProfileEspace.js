@@ -46,6 +46,8 @@ function ProfileEspace() {
         dispatch(setInformation());
     }
 
+    
+
   return (
     <div className="profile__espace__container">
       <Header3 />

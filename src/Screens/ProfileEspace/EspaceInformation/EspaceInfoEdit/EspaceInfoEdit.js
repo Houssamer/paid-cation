@@ -1,14 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../../../features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { Login, selectUser } from '../../../../features/userSlice';
 import profile from '../../../../assets/pictures/profile.png';
 import './EspaceInfoEdit.css';
+import swal from 'sweetalert';
+import axios from '../../../../axios/axios';
+
+
 
 function EspaceInfoEdit() {
     const user = useSelector(selectUser);
     const [img, setImg] = useState(null);
     const [preview, setPreview] = useState('');
     const inputRef = useRef();
+    const dispatch = useDispatch();
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
+    const numRef = useRef();
+    const emailRef = useRef();
 
     useEffect(() => {
         if (img) {
@@ -32,9 +41,102 @@ function EspaceInfoEdit() {
         }
       }
     
-      function handleClick(event) {
+    function handleClick(event) {
         event.preventDefault();
         inputRef.current.click();
+    }
+
+    function handleEdit() {
+        const form = new FormData();
+        form.append('uploads', img);
+        const firstName = firstNameRef.current.value ? firstNameRef.current.value : user.firstName;
+        const lastName = lastNameRef.current.value ? lastNameRef.current.value : user.lastName;
+        const num = numRef.current.value ? numRef.current.value : user.num;
+        const email = emailRef.current.value ? emailRef.current.value : user.email;
+
+        const body = JSON.stringify({
+            firstName,
+            lastName,
+            num,
+            email,
+        })
+
+        const configImg = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'x-auth-token': localStorage.getItem('token'),
+            },
+        };
+
+        const configInfo = {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': localStorage.getItem('token'),
+            },
+        };
+        if (img === null) {
+            axios.post(`/api/users/updateInfo/${user.id}`, body, configInfo)
+                 .then((res) => {
+                     dispatch(Login({
+                         ...user,
+                         firstName: res.firstName,
+                         lastName: res.lastName,
+                         email: res.email,
+                         num: res.num,
+                     }));
+                     swal({
+                         title: "Bien", 
+                         text: res.data.message,
+                         icon: "success",
+                         button: null,
+                        });
+                     setTimeout(() => {
+                         window.location.reload(false);
+                     }, 2000);
+                 })
+                 .catch((err) => {
+                     swal("erreur", err.response.data.message, "error");
+                 })
+        } else {
+            axios.post(`/api/users/updateImg/${user.id}`, form, configImg) 
+            .then((res) => {
+                dispatch(Login({
+                    ...user,
+                    image: res.image,
+                }));
+                swal({
+                    title: "Bien", 
+                    text: "votre image est bien modifiée", 
+                    icon: "success",
+                    button: null,
+                });
+                setImg(null);
+                setTimeout(() => {
+                   window.location.reload(false);
+               }, 3000);
+            })
+            .catch((err) => {
+                swal("erreur", err.response.data.message, "error");
+            })
+
+            axios.post(`/api/users/updateInfo/${user.id}`, body, configInfo)
+            .then((res) => {
+                dispatch(Login({
+                    ...user,
+                    firstName: res.firstName,
+                    lastName: res.lastName,
+                    email: res.email,
+                    num: res.num,
+                }));
+                swal("Bien", res.data.message, "success");
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 3000);
+            })
+            .catch((err) => {
+                swal("erreur", err.response.data.message, "error");
+            })
+        }
       }
 
     return (
@@ -44,19 +146,19 @@ function EspaceInfoEdit() {
                     <form>
                         <div className="information__espace__info">
                             <label htmlFor="nom">Nom</label>
-                            <input type="text" placeholder={user.lastName} id="nom" />
+                            <input type="text" placeholder={user.lastName} ref={lastNameRef} id="nom" />
                         </div>
                         <div className="information__espace__info">
                             <label htmlFor="prenom">Prénom</label>
-                            <input type="text" placeholder={user.firstName} id="prenom" />
+                            <input type="text" placeholder={user.firstName} ref={firstNameRef} id="prenom" />
                         </div>
                         <div className="information__espace__info">
                             <label htmlFor="num">Numéro de tél</label>
-                            <input type="text" placeholder={user.num} id="num" />
+                            <input type="text" placeholder={user.num} ref={numRef} id="num" />
                         </div>
                         <div className="information__espace__info">
                             <label htmlFor="email">Email</label>
-                            <input type="email" placeholder={user.email} id="email" />
+                            <input type="email" placeholder={user.email} ref={emailRef} id="email" />
                         </div>
                     </form>
                 </div>
@@ -79,7 +181,7 @@ function EspaceInfoEdit() {
                 </div>
             </div>
             <div className="information__espace__bottomSide">
-                <button className="information__espace__editButton">Appliquer</button>
+                <button className="information__espace__editButton" onClick={handleEdit}>Appliquer</button>
             </div>
         </div>
     )

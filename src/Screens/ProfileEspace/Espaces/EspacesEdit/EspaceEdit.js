@@ -116,7 +116,9 @@ function EspaceEdit() {
                         hidden 
                         accept="image/*"
                         ref={fileInputRef} 
-                        onChange={handleFileInput} 
+                        onChange={handleFileInput}
+                        multiple
+                        name="multi-files-update"
                     />
                     <div className="espace__edit__image__add" onClick={handleClick}>+</div>
                 </div>

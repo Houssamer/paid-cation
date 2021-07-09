@@ -12,7 +12,6 @@ import star from '../../assets/Design/star.png';
 
 function ProductDet() {
     const user = useSelector(selectUser);
-    //const user = null;
     const products = useSelector(selectProducts);
     const { id } = useParams();
     const product = products.filter(product => product.id === parseInt(id));

@@ -6,20 +6,7 @@ import hotel3 from '../assets/pictures/hotel3.jpg';
 export const productsSlice = createSlice({
   name: 'products',
   initialState: {
-    products:
-      [{
-        id: 1,
-        title: "Titre de publication",
-        images: [hotel, hotel1, hotel2, hotel3],
-        lieu: "Lieu d'espace",
-        features: ["wifi", "Déjeuner", "parking"],
-        price: "400",
-        type: "Hotel",
-        timing: ["Jour"],
-        rate: 3,
-        ville: "Agadir",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-      }],
+    products: [],
   },
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {

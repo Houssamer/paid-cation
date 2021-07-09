@@ -102,14 +102,14 @@ function CheckoutScreen() {
                     <button 
                         className={`checkout__rightSide__button ${jour && `checkout__button__active`}`}
                         onClick={HandleDay}
-                        disabled={hour}
+                        disabled={!day}
                     >
                         Jours
                     </button>
                     <button 
                         className={`checkout__rightSide__button ${!jour && `checkout__button__active`}`}
                         onClick={HandleHour}
-                        disabled={day}
+                        disabled={!hour}
                     >
                         Heures
                     </button>

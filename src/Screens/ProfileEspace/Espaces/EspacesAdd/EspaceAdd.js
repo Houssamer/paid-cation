@@ -1,11 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../../../features/userSlice';
 import './EspaceAdd.css';
+import axios from '../../../../axios/axios';
+import { selectProducts, setProducts } from '../../../../features/productsSlice';
+import swal from 'sweetalert';
+
 
 function EspaceAdd() {
+    const user = useSelector(selectUser);
+    const products = useSelector(selectProducts);
+    const dispatch = useDispatch();
     const [images, setImages] = useState();
+    const [imagesRef, setImagesRef] = useState(null);
     const [img, setImg] = useState(null);
     const [tags, setTags] = useState(null);
     const fileInputRef = useRef();
+    const titleRef = useRef();
+    const lieuRef = useRef();
+    const priceRef = useRef();
+    const typeRef = useRef();
+    const timingRef = useRef();
+    const rateRef = useRef();
+    const villeRef = useRef();
+    const descriptionRef = useRef();
 
     useEffect(() => {
         if (img) {
@@ -49,6 +67,11 @@ function EspaceAdd() {
             const file = event.target.files[0];
             if (file && file.type.substring(0,5) === "image") {
                 setImg(file);
+                if (imagesRef === null) {
+                    setImagesRef([file]);
+                } else {
+                    setImagesRef([...imagesRef, file]);
+                }
             } else {
                 setImg(null);
             }
@@ -57,6 +80,11 @@ function EspaceAdd() {
                  const file = event.target.files[0];
                  if (file && file.type.substring(0,5) === "image") {
                      setImg(file);
+                     if (imagesRef === null) {
+                        setImagesRef([file]);
+                    } else {
+                        setImagesRef([...imagesRef, file]);
+                    }
                  } else {
                      setImg(null);
                  }
@@ -66,6 +94,101 @@ function EspaceAdd() {
          }
          }
 
+    function handleAdd() {
+        if (!imagesRef) {
+            swal({
+                title: "erreur",
+                text: "Veuillez entrer au moins une image",
+                icon: "error",
+                button: "Ok",
+            })
+        }
+        else {
+            const form = new FormData();
+            imagesRef.map((image) => {
+                form.append('multi-files-add', image);
+            });
+    
+            const timing = timingRef.current.value === "both" ? ["jour", "heure"] : timingRef.current.value;
+            
+            const body = JSON.stringify({
+                owner_id: user.id,
+                title: titleRef.current.value,
+                lieu: lieuRef.current.value,
+                features: tags,
+                price: priceRef.current.value,
+                type: typeRef.current.value,
+                timing,
+                rate: rateRef.current.value,
+                ville: villeRef.current.value,
+                description: descriptionRef.current.value,
+            })
+    
+            const configInfo = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': localStorage.getItem('token'),
+                },
+            };
+    
+            const configImg = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'x-auth-token': localStorage.getItem('token'),
+                }
+            }
+    
+            axios.post('/api/products/add', body, configInfo)
+                 .then((res) => {
+                     axios.post(`/api/products/add/image/${res.data.product._id}`, form, configImg)
+                          .then(() => {
+                              dispatch(setProducts([
+                                  ...products,
+                                  {
+                                      id: res.data.product.id,
+                                      owner_id: res.data.product.owner_id,
+                                      title: res.data.product.title,
+                                      images: res.data.product.images,
+                                      lieu: res.data.product.lieu,
+                                      features: res.data.product.features,
+                                      price: res.data.product.price,
+                                      type: res.data.product.type,
+                                      timing: res.data.product.timing,
+                                      rate: res.data.product.rate,
+                                      ville: res.data.product.ville,
+                                      description: res.data.product.decription,
+                                  }
+                              ]))
+
+                              swal({
+                                title: "Bien",
+                                text: "Le produit est bien ajouté",
+                                icon: "success",
+                                button: null,
+                            });
+                            setTimeout(() => {
+                                window.location.reload(false);
+                            }, 2000);
+                          })
+                          .catch((err) => {
+                            swal({
+                                title: "Erreur",
+                                text: err.response.data.message,
+                                icon: "error",
+                                button: "Ok",
+                            })
+                          })
+                 })
+                 .catch((err) => {
+                     swal({
+                         title: "Erreur",
+                         text: err.response.data.message,
+                         icon: "error",
+                         button: "Ok",
+                     })
+                 })
+        }
+    }
 
     return (
         <div className="espace__add__container">
@@ -73,23 +196,27 @@ function EspaceAdd() {
                 <form>
                     <div className="espace__add__input">
                         <label htmlFor="title">Titre</label>
-                        <input type="text" id="title" placeholder="titre" />
+                        <input type="text" id="title" placeholder="titre" required ref={titleRef} />
                     </div>
                     <div className="espace__add__input">
                         <label htmlFor="lieu">Lieu</label>
-                        <input type="text" id="lieu" placeholder="Lieu" />
+                        <input type="text" id="lieu" placeholder="Lieu" required ref={lieuRef} />
+                    </div>
+                    <div className="espace__add__input">
+                        <label htmlFor="rate">Rate</label>
+                        <input type="number" id="rate" placeholder="Rate" required min="1" max="5" ref={rateRef} />
                     </div>
                     <div className="espace__add__input">
                         <label htmlFor="price">Prix</label>
-                        <input type="text" id="price" placeholder="Prix" />
+                        <input type="text" id="price" placeholder="Prix" required  ref={priceRef} />
                     </div>
                     <div className="espace__add__input">
                         <label htmlFor="city">Ville</label>
-                        <input type="text" id="city" placeholder="Ville" />
+                        <input type="text" id="city" placeholder="Ville" required ref={villeRef} />
                     </div>
                     <div className="espace__add__input">
                         <label htmlFor="price">Type</label>
-                        <select type="text" id="type" placeholder="Type">
+                        <select type="text" id="type" placeholder="Type" required ref={typeRef} >
                             <option value="hotel">Hôtel</option>
                             <option value="appartement">Appartement</option>
                             <option value="cafe">Cafe</option>
@@ -98,7 +225,7 @@ function EspaceAdd() {
                     </div>
                     <div className="espace__add__input">
                         <label htmlFor="timing">Jour/Heure</label>
-                        <select type="text" id="timing">
+                        <select type="text" id="timing" required ref={timingRef} >
                             <option value="jour">Jour</option>
                             <option value="heure">Heure</option>
                             <option value="both">les deux</option>
@@ -129,6 +256,8 @@ function EspaceAdd() {
                         id="description" 
                         cols="30" rows="10" 
                         className="espace__add__description"
+                        required
+                        ref={descriptionRef}
                     >
 
                     </textarea>
@@ -145,12 +274,14 @@ function EspaceAdd() {
                         accept="image/*"
                         ref={fileInputRef} 
                         onChange={handleFileInput} 
+                        multiple
+                        name="multi-files-add"
                     />
                     <div className="espace__add__image__add" onClick={handleClick}>+</div>
                 </div>
                 <div className="espace__add__rightSide__bottom">
                     <p>*Vous pouvez pas ajouter plus que sept images</p>
-                    <button className="espace__add__button">Appliquer</button>
+                    <button className="espace__add__button" onClick={handleAdd}>Appliquer</button>
                 </div>
             </div>
         </div>

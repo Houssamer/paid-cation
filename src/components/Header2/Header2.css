@@ -23,8 +23,9 @@
 }
 
 .header2__profile {
-    object-fit: contain;
+    object-fit: cover;
     width: 45px;
+    height: 45px;
     margin: 2em;
     border-radius: 50%;
     cursor: pointer;
