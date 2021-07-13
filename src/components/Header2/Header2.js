@@ -5,6 +5,7 @@ import profile from '../../assets/pictures/profile.png';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Logout, selectUser } from '../../features/userSlice';
+import swal from "sweetalert";
 
 function Header2() {
     const history = useHistory();
@@ -21,7 +22,9 @@ function Header2() {
     }
 
     function SignOut() {
+        swal("Bien", "Vous êtes deconnecté", "success");
         dispatch(Logout());
+        history.push('/');
         localStorage.removeItem('token');
     }
 

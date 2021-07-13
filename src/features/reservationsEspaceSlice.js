@@ -1,29 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import hotel from '../assets/pictures/hotel.jpg';
+
 export const reservationsEspaceSlice = createSlice({
   name: 'reservationsEspace',
   initialState: {
-    reservationsEspace:
-      [{
-        id: 1,
-        title: "Titre de publication",
-        image: hotel,
-        lieu: "Lieu d'espace",
-        features: ["wifi", "Déjeuner", "parking"],
-        price: "1200dh",
-        type: "Hotel",
-        duree: "3 jours",
-        num: '0665684891',
-        email: 'user@gmail.com',
-        lastName: 'nom',
-        firstName: 'prenom',
-
-      }],
+    reservationsEspace: [],
   },
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     setReservations: (state, action) => {
-      state.reservationsEspace = action.payload;
+      state.reservationsEspace = [...state.reservationsEspace, action.payload];
     },
     removeReservations: (state) => {
       state.reservationsEspace = null;

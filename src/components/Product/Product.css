@@ -61,8 +61,8 @@
 }
 
 .type {
-    width: 6vw;
-    height: 5vh;
+    width: 9vw;
+    height: 6vh;
     font-size: 1vw;
     border-radius: 30px;
     background-color: #0F9DE8;
@@ -76,7 +76,7 @@
 }
 
 .product__button {
-    width: 50%;
+    width: 100%;
     height: 5vh;
     background-color: #E8890E;
     border: none;

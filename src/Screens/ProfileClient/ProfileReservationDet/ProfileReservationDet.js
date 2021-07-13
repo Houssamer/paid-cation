@@ -10,7 +10,10 @@ function ProfileReservationDet() {
     const reservations = useSelector(selectReservations);
     const id = useSelector(selectReservationEdit).id;
 
-    const reservation = reservations.filter(reservation => reservation.id === id);
+
+    const reservation = reservations.filter(reservation => reservation._id === id);
+
+    
 
     function handleReturn() {
         dispatch(setReservation());

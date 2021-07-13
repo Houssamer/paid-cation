@@ -19,8 +19,8 @@ function EspaceReservations() {
             {
                 reservations 
                 ?
-                    reservations.map(({id, title, image, lieu, features, price, type}) => (
-                        <div className="reservation__espace__produit" onClick={() => handleDetail(id)}>
+                    reservations.map(({_id, title, image, lieu, features, price, type}) => (
+                        <div className="reservation__espace__produit" onClick={() => handleDetail(_id)} key={_id}>
                             <Product 
                                 title={title} 
                                 image={image} 

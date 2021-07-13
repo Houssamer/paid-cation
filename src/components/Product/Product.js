@@ -19,8 +19,8 @@ function Product({title, image, lieu, features, price, type}) {
                 <h2>{title}</h2>
                 <h4>{lieu}</h4>
                 <div className="features">
-                    {features?.map(feature => (
-                        <h5>{feature}</h5>
+                    {features?.map((feature, index) => (
+                        <h5 key={index}>{feature}</h5>
                     ))}
                 </div>
 

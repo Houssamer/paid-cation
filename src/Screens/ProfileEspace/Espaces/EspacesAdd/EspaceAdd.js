@@ -5,6 +5,8 @@ import './EspaceAdd.css';
 import axios from '../../../../axios/axios';
 import { selectProducts, setProducts } from '../../../../features/productsSlice';
 import swal from 'sweetalert';
+import villes from '../../../../assets/data/data';
+
 
 
 function EspaceAdd() {
@@ -105,7 +107,7 @@ function EspaceAdd() {
         }
         else {
             const form = new FormData();
-            imagesRef.map((image) => {
+            imagesRef.forEach((image) => {
                 form.append('multi-files-add', image);
             });
     
@@ -116,7 +118,7 @@ function EspaceAdd() {
                 title: titleRef.current.value,
                 lieu: lieuRef.current.value,
                 features: tags,
-                price: priceRef.current.value,
+                price: priceRef.current.value + "DH",
                 type: typeRef.current.value,
                 timing,
                 rate: rateRef.current.value,
@@ -212,7 +214,11 @@ function EspaceAdd() {
                     </div>
                     <div className="espace__add__input">
                         <label htmlFor="city">Ville</label>
-                        <input type="text" id="city" placeholder="Ville" required ref={villeRef} />
+                        <select name="ville" id="ville" ref={villeRef}>
+                        {villes.map((ville) => (
+                                    <option value={ville}>{ville}</option>
+                        ))}
+                        </select>
                     </div>
                     <div className="espace__add__input">
                         <label htmlFor="price">Type</label>

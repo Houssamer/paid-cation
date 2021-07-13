@@ -19,36 +19,63 @@ import ConfirmationScreen from './Screens/ConfirmationScreen/ConfirmationScreen'
 import { useDispatch, useSelector } from 'react-redux';
 import { Login, Logout, selectUser } from './features/userSlice';
 import axios from './axios/axios';
-import { setProducts } from './features/productsSlice';
+import { removeProducts, selectProducts, setProducts } from './features/productsSlice';
+
 
 function App() {
   const user = useSelector(selectUser);
+  const products = useSelector(selectProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const config = {
-      headers: {
-        'x-auth-token': localStorage.getItem('token'),
-      },
-    };
+    if (localStorage.getItem('token')) {
+      const config = {
+        headers: {
+          'x-auth-token': localStorage.getItem('token'),
+        },
+      };
+  
+      axios.get("/api/users/", config)
+           .then((res) => {
+             dispatch(Login({
+               token: localStorage.getItem('token'),
+               id: res.data._id,
+               firstName: res.data.firstName,
+               lastName: res.data.lastName,
+               email: res.data.email,
+               num: res.data.num,
+               role: res.data.role,
+               entreprise: res.data.entreprise,
+               image: res.data.image,
+             }))
+           })
+           .catch((err) => {
+             dispatch(Logout());
+           })
+    }
 
-    axios.get("/api/users/", config)
-         .then((res) => {
-           dispatch(Login({
-             token: localStorage.getItem('token'),
-             id: res.data._id,
-             firstName: res.data.firstName,
-             lastName: res.data.lastName,
-             email: res.data.email,
-             num: res.data.num,
-             role: res.data.role,
-             entreprise: res.data.entreprise,
-             image: res.data.image,
-           }))
-         })
-         .catch((err) => {
-           dispatch(Logout());
-         })
+    axios.get('/api/products/all')
+    .then((res) => {
+      dispatch(removeProducts());
+      res.data.forEach(data => {
+        dispatch(setProducts([
+        ...products,
+        {
+         id: data._id,
+         owner_id: data.owner_id,
+         title: data.title,
+         images: data.images,
+         lieu: data.lieu,
+         features: data.features,
+         price: data.price,
+         type: data.type,
+         timing: data.timing,
+         rate: data.rate,
+         ville: data.ville,
+         description: data.description,
+        }]))})
+    })
+    .catch((err) => console.log(err));
 
   }, [dispatch])
 

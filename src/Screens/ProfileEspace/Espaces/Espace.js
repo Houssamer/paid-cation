@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEspaceAdd, setEspaceEdit } from '../../../features/espacePageSlice';
 import './Espace.css';
 import Product from '../../../components/Product/Product';
 import empty from '../../../assets/Design/empty.png';
 import plus from '../../../assets/Design/plus.png'
-import { selectEspaces } from '../../../features/espacesSlice';
+import { selectEspaces, setEspaces } from '../../../features/espacesSlice';
+import axios from '../../../axios/axios';
+import { selectUser } from '../../../features/userSlice';
 
 function Espace() {
     const dispatch = useDispatch();
     const espaces = useSelector(selectEspaces);
+    const user = useSelector(selectUser);
+ 
+
+    useEffect(() => {
+        axios.get(`/api/products/owner/${user.id}`)
+             .then((res) => dispatch(setEspaces(res.data)))
+             .catch((err) => console.log(err));
+    });
+
+   
 
     function handleEdit(id) {
         dispatch(setEspaceEdit(id));
@@ -25,8 +37,8 @@ function Espace() {
                 espaces
                 ? 
                 <>
-                    {espaces.map(({id, title, images, lieu, features, price, type}) => (
-                        <div className="espaces__espace__produit" onClick={() => handleEdit(id)}>
+                    {espaces.map(({_id, title, images, lieu, features, price, type}) => (
+                        <div key={_id} className="espaces__espace__produit" onClick={() => handleEdit(_id)}>
                             <Product 
                                 title={title} 
                                 image={images[0]} 

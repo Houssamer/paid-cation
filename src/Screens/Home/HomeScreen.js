@@ -9,6 +9,7 @@ import facebook from '../../assets/Design/facebook.svg';
 import instagram from '../../assets/Design/instagram.svg';
 import linkedin from '../../assets/Design/linkedin.svg';
 import { useHistory } from 'react-router-dom';
+import villes from '../../assets/data/data';
 
 function HomeScreen() {
     const history = useHistory();
@@ -55,10 +56,9 @@ function HomeScreen() {
                         <div className="input">
                             <label htmlFor="city">Ville:</label>
                             <select name="Ville" id="city">
-                                <option value="agadir">Agadir</option>
-                                <option value="casablanca">Casablanca</option>
-                                <option value="marrakech">Marrakech</option>
-                                <option value="essaouira">Essaouira</option>
+                                {villes.map((ville, index) => (
+                                    <option value={ville} key={index}>{ville}</option>
+                                ))}
                             </select>
                         </div>
                         <div className="input">

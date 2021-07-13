@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './ProfileInfoEdit.css';
 import profile from '../../../assets/pictures/profile.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { Login, Logout, selectUser } from '../../../features/userSlice';
+import { Login, selectUser } from '../../../features/userSlice';
 import axios from '../../../axios/axios';
 import swal from 'sweetalert';
 

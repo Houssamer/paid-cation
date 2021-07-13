@@ -11,9 +11,9 @@
 .reservation__client__empty {
     width: 100%;
     display: flex;
+    margin-top: 7vh;
     align-items: center;
     justify-content: center;
-    margin-top: 7vh;
 }
 
 .reservation__client__empty__img {

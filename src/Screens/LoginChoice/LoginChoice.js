@@ -52,8 +52,8 @@ function LoginChoice() {
                      role: res.data.user.role,
                      image: res.data.user?.image,
                  }))
+                 window.location.reload(false);
                  history.push('/');
-
              })
              .catch((err) => {
                 dispatch(Logout());
@@ -90,6 +90,7 @@ function LoginChoice() {
                      image: res.data.user?.image,
                  }))
                  history.push('/');
+                 window.location.reload(false);
              })
              .catch((err) => {
                  dispatch(Logout());

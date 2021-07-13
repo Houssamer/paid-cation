@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProfileEspace.css';
 import Header3 from '../../components/Header3/Header3';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,9 @@ import EspaceReservations from './EspaceReservation/Reservations/EspaceReservati
 import EspaceReservationDet from './EspaceReservation/ReservationDet/EspaceReservationDet';
 import EspaceInfo from './EspaceInformation/EspaceInfo/EspaceInfo';
 import EspaceInfoEdit from './EspaceInformation/EspaceInfoEdit/EspaceInfoEdit';
+import { setReservations } from '../../features/reservationsEspaceSlice';
+import axios from '../../axios/axios';
+import { selectUser } from '../../features/userSlice';
 
 
 function ProfileEspace() {
@@ -23,7 +26,40 @@ function ProfileEspace() {
   const espaceAdd = useSelector(selectEspaceAdd);
   const espaceEdit = useSelector(selectEspaceEdit);
   const information = useSelector(selectInfo);
+  const [reservationsInfo, setReservationsInfo] = useState();
+  const user = useSelector(selectUser);
 
+  useEffect(() => {
+    const config = {
+        headers: {
+            'x-auth-token': localStorage.getItem('token'),
+        },
+    };
+    axios.get(`/api/reservations/owner/${user.id}`, config)
+         .then((res) => {
+            setReservationsInfo(res.data)
+         })
+         .catch(err => console.log(err));
+}, [])
+
+useEffect(() => {
+    reservationsInfo?.forEach((reservation) => {
+        axios.get(`/api/products/${reservation.product_id}`)
+        .then((res) => {
+                   dispatch(setReservations(
+                       {
+                           ...reservation,
+                           title: res.data.title,
+                           lieu: res.data.lieu,
+                           features: res.data.features,
+                           type: res.data.type,
+                       }
+                   ))
+               
+           })
+           .catch((err) => console.log(err));
+    })
+}, [reservationsInfo])
 
     function handleEspace() {
         setReservat(false);

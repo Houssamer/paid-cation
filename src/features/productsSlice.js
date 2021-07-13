@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import hotel from '../assets/pictures/hotel.jpg';
-import hotel1 from '../assets/pictures/hotel1.jpg';
-import hotel2 from '../assets/pictures/hotel2.jpg';
-import hotel3 from '../assets/pictures/hotel3.jpg';
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState: {
@@ -11,10 +8,10 @@ export const productsSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     setProducts: (state, action) => {
-      state.espaces = action.payload;
+      state.products = action.payload;
     },
     removeProducts: (state) => {
-      state.espaces = null;
+      state.products = [];
     }
   },
 

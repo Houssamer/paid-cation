@@ -53,11 +53,11 @@
     position: absolute;
     z-index: 1;
     top: 0px;
-    right: 8vw;
+    right: 7vw;
     color: white;
     background-color: #BFBFBF;
     border-radius: 30px;
-    width: 5vw;
+    width: 9vw;
     text-align: center;
     font-size: 1vw;
 }
@@ -137,6 +137,7 @@
 
 .description {
     margin-bottom: 8vh;
+    text-align: justify;
 }
 
 .product__list__features {

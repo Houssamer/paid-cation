@@ -6,6 +6,7 @@ import { setReservationDet } from '../../../features/pageSlice';
 import { selectReservations } from '../../../features/reservationsSlice';
 import empty from '../../../assets/Design/empty.png';
 
+
 function ProfileReservation() {
     const dispatch = useDispatch();
     const reservations = useSelector(selectReservations);
@@ -19,8 +20,8 @@ function ProfileReservation() {
             {
                 reservations 
                 ?
-                    reservations.map(({id, title, image, lieu, features, price, type}) => (
-                        <div className="reservation__client__produit" onClick={() => handleDetail(id)}>
+                    reservations.map(({_id, title, image, lieu, features, price, type}) => (
+                        <div className="reservation__client__produit" onClick={() => handleDetail(_id)} key={_id}>
                             <Product 
                                 title={title} 
                                 image={image} 
