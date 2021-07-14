@@ -5,17 +5,23 @@ import empty from '../../../../assets/Design/empty.png'
 import './EspaceReservations.css';
 import { selectReservations } from '../../../../features/reservationsEspaceSlice';
 import Product from '../../../../components/Product/Product';
+import { useSpring, animated } from 'react-spring';
 
 function EspaceReservations() {
     const dispatch = useDispatch();
     const reservations = useSelector(selectReservations);
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     function handleDetail(id) {
         dispatch(setReservationDet(id));
     }
 
     return (
-        <div className={`${reservations ? `reservation__espace__container` : `reservation__espace__empty__container`}`}>
+        <animated.div style={props} className={`${reservations ? `reservation__espace__container` : `reservation__espace__empty__container`}`}>
             {
                 reservations 
                 ?
@@ -38,7 +44,7 @@ function EspaceReservations() {
                 )
                 
             }
-        </div>
+        </animated.div>
     )
 }
 

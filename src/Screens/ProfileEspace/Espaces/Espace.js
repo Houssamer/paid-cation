@@ -8,11 +8,17 @@ import plus from '../../../assets/Design/plus.png'
 import { selectEspaces, setEspaces } from '../../../features/espacesSlice';
 import axios from '../../../axios/axios';
 import { selectUser } from '../../../features/userSlice';
+import { useSpring, animated} from 'react-spring';
 
 function Espace() {
     const dispatch = useDispatch();
     const espaces = useSelector(selectEspaces);
     const user = useSelector(selectUser);
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
  
 
     useEffect(() => {
@@ -32,7 +38,7 @@ function Espace() {
     }
 
     return (
-        <div className={`${espaces ? `espaces__espace__container` : `espaces__espace__empty__container`}`}>
+        <animated.div style={props} className={`${espaces ? `espaces__espace__container` : `espaces__espace__empty__container`}`}>
             {
                 espaces
                 ? 
@@ -61,7 +67,7 @@ function Espace() {
                 )
                 
             }
-        </div>
+        </animated.div>
     )
 }
 

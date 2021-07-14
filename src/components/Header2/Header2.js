@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Logout, selectUser } from '../../features/userSlice';
 import swal from "sweetalert";
+import { removeReservations } from '../../features/reservationsSlice';
 
 function Header2() {
     const history = useHistory();
@@ -15,6 +16,7 @@ function Header2() {
 
     function homeScreen() {
         history.push('/');
+        dispatch(removeReservations());
     }
 
     function profileScreen() {

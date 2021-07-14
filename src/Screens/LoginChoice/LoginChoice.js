@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from '../../axios/axios';
 import { Login, Logout } from '../../features/userSlice';
+import { useSpring, animated } from 'react-spring';
 
 function LoginChoice() {
     const [client, setClient] = useState(false);
@@ -16,6 +17,20 @@ function LoginChoice() {
     const passwordClientRef = useRef();
     const emailEspaceRef = useRef();
     const passwordEspaceRef = useRef();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
+    const props1 = useSpring({
+        y: espace ? 0 : 1000,
+        x: espace && 0,
+        config: {duration: 500},
+    });
+    const props2 = useSpring({
+        opacity: client ? 1 : 0,
+        config: {duration: 500},
+    });
     
     function inscriptionClient() {
         history.push('/InscriptionClient');   
@@ -100,7 +115,7 @@ function LoginChoice() {
     }
 
     return (
-        <div className="container">
+        <animated.div style={props} className="container">
             <Header1 />
             <div className="section">
                 <div className="background__img" />
@@ -114,7 +129,7 @@ function LoginChoice() {
                 </div>
                 ) : (
                     !espace ? 
-                    (<div className="login">
+                    (<animated.div style={props2} className="login">
                         <img src={arrow} alt="arrow" className="arrow" onClick={() => {setEspace(false); setClient(false);}} />
                         <form>
                             <div className="input">
@@ -128,9 +143,9 @@ function LoginChoice() {
                             <button className="submit" onClick={(event) => handleSignInClient(event)}>Login</button>
                         </form>
                         <h3>Pas un membre? <span className="signUp" onClick={inscriptionClient}>Créer un compte.</span></h3>
-                    </div>)
+                    </animated.div>)
                     : (
-                        <div className="login">
+                        <animated.div style={props1} className="login">
                         <img src={arrow} alt="arrow" className="arrow" onClick={() => {setClient(false); setEspace(false);}} />
                         <form>
                             <div className="input">
@@ -144,12 +159,12 @@ function LoginChoice() {
                             <button className="submit" onClick={(event) => handleSignInEspace(event)}>Login</button>
                         </form>
                         <h3>Pas un membre? <span className="signUp" onClick={inscriptionEspace}>Créer un compte.</span></h3>
-                    </div>
+                    </animated.div>
                     )
                 )}
             <div className="shadow" />
             </div>
-        </div>
+        </animated.div>
     )
 }
 

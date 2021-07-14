@@ -4,10 +4,16 @@ import { setInformationEdit } from '../../../../features/espacePageSlice';
 import { selectUser } from '../../../../features/userSlice';
 import profile from '../../../../assets/pictures/profile.png'
 import './EspaceInfo.css';
+import { useSpring, animated } from 'react-spring';
 
 function EspaceInfo() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     function editInfo(event) {
         event.preventDefault();
@@ -16,7 +22,7 @@ function EspaceInfo() {
     }
 
     return (
-        <div className="information__espace__container">
+        <animated.div style={props} className="information__espace__container">
             <div className="information__espace__topSide">
                 <div className="information__espace__leftSide">
                     <form>
@@ -51,7 +57,7 @@ function EspaceInfo() {
                     Modifier
                 </button>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

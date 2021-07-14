@@ -4,11 +4,18 @@ import arrow from '../../../assets/Design/arrow.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectReservations } from '../../../features/reservationsSlice';
 import { selectReservationEdit, setReservation } from '../../../features/pageSlice';
+import { useSpring, animated } from 'react-spring';
+
 
 function ProfileReservationDet() {
     const dispatch = useDispatch();
     const reservations = useSelector(selectReservations);
     const id = useSelector(selectReservationEdit).id;
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 800},
+    })
 
 
     const reservation = reservations.filter(reservation => reservation._id === id);
@@ -20,7 +27,7 @@ function ProfileReservationDet() {
     }
 
     return (
-        <div className="reservationEdit__client__container">
+        <animated.div style={props} className="reservationEdit__client__container">
             <div className="reservationEdit__client__content">
                 <div className="reservation__client__card">
                     <h2>{reservation[0].title}</h2>
@@ -33,7 +40,7 @@ function ProfileReservationDet() {
                     <img src={arrow} alt="arrow" className="reservation__client__arrow" onClick={handleReturn} />
                 </div>
             </div>
-        </div>
+        </animated.div>
     )
 };
 

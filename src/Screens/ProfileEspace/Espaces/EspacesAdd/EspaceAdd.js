@@ -6,6 +6,7 @@ import axios from '../../../../axios/axios';
 import { selectProducts, setProducts } from '../../../../features/productsSlice';
 import swal from 'sweetalert';
 import villes from '../../../../assets/data/data';
+import { useSpring, animated } from 'react-spring';
 
 
 
@@ -26,6 +27,11 @@ function EspaceAdd() {
     const rateRef = useRef();
     const villeRef = useRef();
     const descriptionRef = useRef();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     useEffect(() => {
         if (img) {
@@ -193,7 +199,7 @@ function EspaceAdd() {
     }
 
     return (
-        <div className="espace__add__container">
+        <animated.div style={props} className="espace__add__container">
             <div className="espace__add__leftSide">
                 <form>
                     <div className="espace__add__input">
@@ -290,7 +296,7 @@ function EspaceAdd() {
                     <button className="espace__add__button" onClick={handleAdd}>Appliquer</button>
                 </div>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

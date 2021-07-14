@@ -11,7 +11,7 @@ export const reservationsSlice = createSlice({
       state.reservations = [...state.reservations, action.payload];
     },
     removeReservations: (state) => {
-      state.reservations = null;
+      state.reservations = [];
     }
   },
 

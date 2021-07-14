@@ -9,7 +9,7 @@ import ProfileInfoEdit from './ProfileInfoEdit/ProfileInfoEdit';
 import { selectInfo, selectReservation, selectReservationEdit, setInformation, setReservation } from '../../features/pageSlice';
 import axios from '../../axios/axios';
 import { selectUser } from '../../features/userSlice';
-import { setReservations } from '../../features/reservationsSlice';
+import { removeReservations, setReservations } from '../../features/reservationsSlice';
 
 
 function ProfileClient() {

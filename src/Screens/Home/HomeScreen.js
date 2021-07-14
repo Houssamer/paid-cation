@@ -10,9 +10,16 @@ import instagram from '../../assets/Design/instagram.svg';
 import linkedin from '../../assets/Design/linkedin.svg';
 import { useHistory } from 'react-router-dom';
 import villes from '../../assets/data/data';
+import { useSpring, animated} from 'react-spring';
+
 
 function HomeScreen() {
     const history = useHistory();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 800}
+    })
 
     function rechercher(event) {
         event.preventDefault();
@@ -20,7 +27,7 @@ function HomeScreen() {
     }
 
     return (
-        <div className="homeScreen">
+        <animated.div style={props} className="homeScreen">
             <Header />
             <div className="section1">
             <div className="homeScreen__background" />
@@ -111,7 +118,7 @@ function HomeScreen() {
                     </div>
                 </div>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from '../../axios/axios';
 import { Login, Logout } from '../../features/userSlice';
+import { useSpring, animated } from 'react-spring';
 
 function InscriptionClient() {
     const history = useHistory();
@@ -15,6 +16,11 @@ function InscriptionClient() {
     const entrepriseRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
+    const props = useSpring({
+        from: {y: 1000, x:0},
+        to : {y:0, x:0},
+        config: {duration: 600},
+    })
 
     function login() {
         history.push('/loginchoice');
@@ -64,7 +70,7 @@ function InscriptionClient() {
         <div className="container_inscriptionClient">
             <div className="background__img" />
             <Header1 />
-            <div className="section_inscriptionClient">
+            <animated.div style={props} className="section_inscriptionClient">
                 <form>
                     <div className="form__content">
                         <div className="form__contentLeft">
@@ -99,7 +105,7 @@ function InscriptionClient() {
                     <button className="button_inscription" onClick={(event) => handleSignUp(event)}>Créer un compte</button>
                 </form>
                 <h3>Déja un membre? <span className="login_inscription" onClick={login}>Login.</span></h3>
-            </div>
+            </animated.div>
 
 
             <div className="shadow" />

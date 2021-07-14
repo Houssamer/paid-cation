@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from '../../axios/axios';
 import { Login, Logout } from '../../features/userSlice';
+import { useSpring, animated} from 'react-spring';
 
 function InscriptionEspace() {
     const history = useHistory();
@@ -14,6 +15,11 @@ function InscriptionEspace() {
     const telRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 800}
+    })
 
     function logineEspace() {
         history.push('/loginchoice')
@@ -61,7 +67,7 @@ function InscriptionEspace() {
         <div className="container__inscriptionEspace">
             <Header1 />
 
-            <div className="section__inscriptionEspace">
+            <animated.div style={props} className="section__inscriptionEspace">
                 <form>
                     <div className="form__inscriptionEspace__leftSide">
                         <div className="input__inscription__espace">
@@ -90,7 +96,7 @@ function InscriptionEspace() {
                         <h3>Déja un membre? <span className="signup__espace" onClick={logineEspace}>Login.</span></h3>
                     </div>
                 </form>
-            </div>
+            </animated.div>
         </div>
     )
 }

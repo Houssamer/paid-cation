@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Login, selectUser } from '../../../features/userSlice';
 import axios from '../../../axios/axios';
 import swal from 'sweetalert';
+import { useSpring, animated } from 'react-spring'; 
 
 
 
@@ -18,6 +19,12 @@ function ProfileInfoEdit() {
     const lastNameRef = useRef();
     const numRef = useRef();
     const emailRef = useRef();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 800},
+    })
+
 
     useEffect(() => {
         if (img) {
@@ -141,7 +148,7 @@ function ProfileInfoEdit() {
       }
 
     return (
-        <div className="information__client__container">
+        <animated.div style={props} className="information__client__container">
             <div className="information__client__topSide">
                 <div className="information__client__leftSide">
                     <form>
@@ -184,7 +191,7 @@ function ProfileInfoEdit() {
             <div className="information__client__bottomSide">
                 <button className="information__client__editButton" onClick={handleEdit}>Appliquer</button>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

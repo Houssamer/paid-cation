@@ -4,11 +4,17 @@ import { selectReservationEdit, setReservation } from '../../../../features/espa
 import { selectReservations } from '../../../../features/reservationsEspaceSlice';
 import './EspaceReservationDet.css';
 import arrow from '../../../../assets/Design/arrow.png';
+import { useSpring, animated } from 'react-spring';
 
 function EspaceReservationDet() {
     const dispatch = useDispatch();
     const reservations = useSelector(selectReservations);
     const id = useSelector(selectReservationEdit).id;
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     const reservation = reservations.filter(reservation => reservation._id === id);
 
@@ -17,7 +23,7 @@ function EspaceReservationDet() {
     }
 
     return (
-        <div className="reservationEdit__espace__container">
+        <animated.div style={props} className="reservationEdit__espace__container">
             <div className="reservationEdit__espace__content">
                 <div className="reservation__espace__card">
                     <h2>{reservation[0].title}</h2>
@@ -32,7 +38,7 @@ function EspaceReservationDet() {
                     <img src={arrow} alt="arrow" className="reservation__espace__arrow" onClick={handleReturn} />
                 </div>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

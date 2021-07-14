@@ -4,10 +4,17 @@ import profile from '../../../assets/pictures/profile.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../features/userSlice';
 import { setInformationEdit } from '../../../features/pageSlice';
+import { useSpring, animated} from 'react-spring';
 
 function ProfileInformation() {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 800},
+    });
+
 
     function editInfo(event) {
         event.preventDefault();
@@ -16,7 +23,7 @@ function ProfileInformation() {
     }
 
     return (
-        <div className="information__client__container">
+        <animated.div style={props} className="information__client__container">
             <div className="information__client__topSide">
                 <div className="information__client__leftSide">
                     <form>
@@ -51,7 +58,7 @@ function ProfileInformation() {
                     Modifier
                 </button>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

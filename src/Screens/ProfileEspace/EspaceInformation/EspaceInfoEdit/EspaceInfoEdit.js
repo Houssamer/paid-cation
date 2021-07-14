@@ -5,6 +5,7 @@ import profile from '../../../../assets/pictures/profile.png';
 import './EspaceInfoEdit.css';
 import swal from 'sweetalert';
 import axios from '../../../../axios/axios';
+import { useSpring, animated } from 'react-spring';
 
 
 
@@ -18,6 +19,11 @@ function EspaceInfoEdit() {
     const lastNameRef = useRef();
     const numRef = useRef();
     const emailRef = useRef();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     useEffect(() => {
         if (img) {
@@ -140,7 +146,7 @@ function EspaceInfoEdit() {
       }
 
     return (
-        <div className="information__espace__container">
+        <animated.div style={props} className="information__espace__container">
             <div className="information__espace__topSide">
                 <div className="information__espace__leftSide">
                     <form>
@@ -183,7 +189,7 @@ function EspaceInfoEdit() {
             <div className="information__espace__bottomSide">
                 <button className="information__espace__editButton" onClick={handleEdit}>Appliquer</button>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

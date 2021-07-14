@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectProducts } from '../../features/productsSlice';
 import { useHistory } from 'react-router-dom';
 import villes from '../../assets/data/data';
+import { useSpring, animated} from 'react-spring';
 
 
 function ShowVisiteur() {
@@ -15,6 +16,11 @@ function ShowVisiteur() {
     const cityRef = useRef();
     const typeRef = useRef();
     const timingRef = useRef();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 800}
+    })
 
     useEffect(() => {
         setProducts(Products)
@@ -105,7 +111,7 @@ function ShowVisiteur() {
             </div>
             <div className="sectionVisiteur__rightSide">
             {products.map((product, index) => (
-                <div onClick={() => handleClick(product.id)} key={index}>
+                <animated.div style={props} onClick={() => handleClick(product.id)} key={index}>
                     <Product
                         title={product.title}
                         image={product.images[0]}
@@ -114,7 +120,7 @@ function ShowVisiteur() {
                         lieu={product.lieu}
                         price={product.price}
                     />                    
-                </div>
+                </animated.div>
                 ))}
             </div>
         </div>

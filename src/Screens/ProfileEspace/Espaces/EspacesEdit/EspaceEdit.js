@@ -4,6 +4,7 @@ import { selectEspaceEdit } from '../../../../features/espacePageSlice';
 import { selectEspaces } from '../../../../features/espacesSlice';
 import swal from 'sweetalert';
 import axios from '../../../../axios/axios';
+import { useSpring, animated } from 'react-spring';
 
 
 import './EspaceEdit.css';
@@ -24,6 +25,11 @@ function EspaceEdit() {
     const priceRef = useRef();
     const villeRef = useRef();
     const descriptionRef = useRef();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     useEffect(() => {
         if (img) {
@@ -168,7 +174,7 @@ function EspaceEdit() {
 
 
     return (
-        <div className="espace__edit__container">
+        <animated.div style={props} className="espace__edit__container">
             <div className="espace__edit__leftSide">
                 <form>
                     <div className="espace__edit__input">
@@ -240,7 +246,7 @@ function EspaceEdit() {
                     <button className="espace__edit__button" onClick={handleEdit}>Appliquer</button>
                 </div>
             </div>
-        </div>
+        </animated.div>
     )
 }
 
