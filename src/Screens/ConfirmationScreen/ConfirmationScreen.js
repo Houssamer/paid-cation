@@ -3,16 +3,22 @@ import './ConfirmationScreen.css';
 import Header3 from '../../components/Header3/Header3';
 import yes from '../../assets/Design/yesGreen.png';
 import { useHistory } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
 
 function ConfirmationScreen() {
     const history = useHistory();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     function handleClick() {
         history.push('/clientProfile')
     }
 
     return (
-        <div className="confirmation__container"> 
+        <animated.div style={props} className="confirmation__container"> 
             <Header3 />
 
             <div className="confirmation__card">
@@ -22,7 +28,7 @@ function ConfirmationScreen() {
 
                 <button className="confirmation__button" onClick={handleClick}>Aller à mes réservation</button>
             </div>
-        </div>
+        </animated.div>
     )
 }
 

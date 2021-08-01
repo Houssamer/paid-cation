@@ -9,6 +9,7 @@ import left from '../../assets/Design/left.png';
 import right from '../../assets/Design/right.png';
 import star from '../../assets/Design/star.png';
 import axios from '../../axios/axios';
+import { useSpring, animated } from 'react-spring'; 
 
 
 function ProductDet() {
@@ -18,6 +19,11 @@ function ProductDet() {
     const { id } = useParams();
     const [current, setCurrent] = useState(1);
     const history = useHistory();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     useEffect(() => {
 
@@ -56,7 +62,7 @@ function ProductDet() {
     }
 
     return (
-        <div className="product__detail_container">
+        <animated.div style={props} className="product__detail_container">
             {user ? (<Header2 />) : <Header />}
                 {product && (
                     <>
@@ -87,8 +93,8 @@ function ProductDet() {
                                 ))
                             }
                             </div>
-                            {product.timing[0] === "jour" && (<h3>{product.price}DH/{product.timing[0]}</h3>)}
-                            {product.timing[1] === "heure" && (<h3>{product.price}DH/{product.timing[1]}</h3>)}
+                            {product.timing[0] === "jour" && (<h3>{product.price}/{product.timing[0]}</h3>)}
+                            {product.timing[1] === "heure" && (<h3>{product.price}/{product.timing[1]}</h3>)}
                             <button className="product__detail__button" disabled={!user} onClick={() => handleClick(product._id)}>Réserver</button>
                         </div>
                     </div>
@@ -106,7 +112,7 @@ function ProductDet() {
                 )}
             
 
-        </div>
+        </animated.div>
     )
 }
 

@@ -8,6 +8,7 @@ import moment from 'moment';
 import axios from '../../axios/axios';
 import { selectUser } from '../../features/userSlice';
 import swal from 'sweetalert';
+import { useSpring, animated} from 'react-spring';
 
 
 function CheckoutScreen() {
@@ -28,6 +29,11 @@ function CheckoutScreen() {
     const arriveHourRef = useRef();
     const departHourRef = useRef();
     const history = useHistory();
+    const props = useSpring({
+        from: {opacity: 0},
+        to: {opacity: 1},
+        config: {duration: 600},
+    });
 
     useEffect(() => {
         
@@ -250,7 +256,7 @@ function CheckoutScreen() {
     }
 
     return (
-        <div className="checkout__container">
+        <animated.div style={props} className="checkout__container">
             <Header3 />
             {product && (
                 <>
@@ -369,7 +375,7 @@ function CheckoutScreen() {
                 </div>
             </>
             )}
-        </div>
+        </animated.div>
     )
 }
 
