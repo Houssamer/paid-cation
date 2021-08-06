@@ -6,6 +6,7 @@ import './EspaceInfoEdit.css';
 import swal from 'sweetalert';
 import axios from '../../../../axios/axios';
 import { useSpring, animated } from 'react-spring';
+import ReactLoading from 'react-loading';
 
 
 
@@ -17,6 +18,7 @@ function EspaceInfoEdit() {
     const dispatch = useDispatch();
     const firstNameRef = useRef();
     const lastNameRef = useRef();
+    const [ready, setReady] = useState(true);
     const numRef = useRef();
     const emailRef = useRef();
     const props = useSpring({
@@ -53,6 +55,7 @@ function EspaceInfoEdit() {
     }
 
     function handleEdit() {
+        setReady(false);
         const form = new FormData();
         form.append('uploads', img);
         const firstName = firstNameRef.current.value ? firstNameRef.current.value : user.firstName;
@@ -90,6 +93,7 @@ function EspaceInfoEdit() {
                          email: res.email,
                          num: res.num,
                      }));
+                     setReady(true);
                      swal({
                          title: "Bien", 
                          text: res.data.message,
@@ -101,6 +105,7 @@ function EspaceInfoEdit() {
                      }, 2000);
                  })
                  .catch((err) => {
+                     setReady(true);
                      swal("erreur", err.response.data.message, "error");
                  })
         } else {
@@ -122,6 +127,7 @@ function EspaceInfoEdit() {
                }, 3000);
             })
             .catch((err) => {
+                setReady(true)
                 swal("erreur", err.response.data.message, "error");
             })
 
@@ -134,12 +140,14 @@ function EspaceInfoEdit() {
                     email: res.email,
                     num: res.num,
                 }));
+                setReady(true);
                 swal("Bien", res.data.message, "success");
                 setTimeout(() => {
                     window.location.reload(false);
                 }, 3000);
             })
             .catch((err) => {
+                setReady(true)
                 swal("erreur", err.response.data.message, "error");
             })
         }
@@ -147,6 +155,11 @@ function EspaceInfoEdit() {
 
     return (
         <animated.div style={props} className="information__espace__container">
+            {!ready && (
+                <div className={`${ready ? "hiddenLoadingImg" : "LoadingImg"}`}>
+                    <ReactLoading type="spin" color="black" height={'20%'} width={'20%'} />
+                </div>
+            )}
             <div className="information__espace__topSide">
                 <div className="information__espace__leftSide">
                     <form>

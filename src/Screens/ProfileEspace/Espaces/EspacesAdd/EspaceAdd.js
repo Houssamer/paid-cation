@@ -7,6 +7,7 @@ import { selectProducts, setProducts } from '../../../../features/productsSlice'
 import swal from 'sweetalert';
 import villes from '../../../../assets/data/data';
 import { useSpring, animated } from 'react-spring';
+import ReactLoading from 'react-loading';
 
 
 
@@ -18,6 +19,7 @@ function EspaceAdd() {
     const [imagesRef, setImagesRef] = useState(null);
     const [img, setImg] = useState(null);
     const [tags, setTags] = useState(null);
+    const [ready, setReady] = useState(true);
     const fileInputRef = useRef();
     const titleRef = useRef();
     const lieuRef = useRef();
@@ -112,6 +114,7 @@ function EspaceAdd() {
             })
         }
         else {
+            setReady(false);
             const form = new FormData();
             imagesRef.forEach((image) => {
                 form.append('multi-files-add', image);
@@ -167,7 +170,7 @@ function EspaceAdd() {
                                       description: res.data.product.decription,
                                   }
                               ]))
-
+                              setReady(true);
                               swal({
                                 title: "Bien",
                                 text: "Le produit est bien ajouté",
@@ -200,6 +203,12 @@ function EspaceAdd() {
 
     return (
         <animated.div style={props} className="espace__add__container">
+            {!ready && (
+                <div className={`${ready ? "hiddenLoading" : "Loading"}`}>
+                    <ReactLoading type="spin" color="black" height={'20%'} width={'20%'} />
+                </div>
+            )
+            }
             <div className="espace__add__leftSide">
                 <form>
                     <div className="espace__add__input">

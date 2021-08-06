@@ -6,13 +6,14 @@ import { Login, selectUser } from '../../../features/userSlice';
 import axios from '../../../axios/axios';
 import swal from 'sweetalert';
 import { useSpring, animated } from 'react-spring'; 
-
+import ReactLoading from 'react-loading';
 
 
 function ProfileInfoEdit() {
     const user = useSelector(selectUser);
     const [img, setImg] = useState(null);
     const [preview, setPreview] = useState('');
+    const [ready, setReady] = useState(true);
     const inputRef = useRef();
     const dispatch = useDispatch();
     const firstNameRef = useRef();
@@ -54,6 +55,7 @@ function ProfileInfoEdit() {
       }
 
       function handleEdit() {
+          setReady(false);
         const form = new FormData();
         form.append('uploads', img);
         const firstName = firstNameRef.current.value ? firstNameRef.current.value : user.firstName;
@@ -91,6 +93,7 @@ function ProfileInfoEdit() {
                          email: res.email,
                          num: res.num,
                      }));
+                     setReady(true);
                      swal({
                          title: "Bien", 
                          text: res.data.message,
@@ -102,6 +105,7 @@ function ProfileInfoEdit() {
                      }, 2000);
                  })
                  .catch((err) => {
+                     setReady(true);
                      swal("erreur", err.response.data.message, "error");
                  })
         } else {
@@ -120,6 +124,7 @@ function ProfileInfoEdit() {
                 }, 3000);
             })
             .catch((err) => {
+                setReady(true);
                 swal("erreur", err.response.data.message, "error");
             })
             
@@ -129,6 +134,7 @@ function ProfileInfoEdit() {
                     ...user,
                     image: res.image,
                 }));
+                setReady(true);
                 swal({
                     title: "Bien", 
                     text: "votre image est bien modifiée", 
@@ -141,6 +147,7 @@ function ProfileInfoEdit() {
                }, 3000);
             })
             .catch((err) => {
+                setReady(true);
                 swal("erreur", err.response.data.message, "error");
             })
 
@@ -149,6 +156,11 @@ function ProfileInfoEdit() {
 
     return (
         <animated.div style={props} className="information__client__container">
+            {!ready && (
+                <div className={`${ready ? "hiddenLoadingImg" : "LoadingImg"}`}>
+                    <ReactLoading type="spin" color="black" height={'20%'} width={'20%'} />
+                </div>
+            )}
             <div className="information__client__topSide">
                 <div className="information__client__leftSide">
                     <form>
